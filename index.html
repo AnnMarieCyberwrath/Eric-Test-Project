@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Test Project</title>
+    <style>
+        /*CONTAINER STYLE*/
+        .container{
+            background-color: gray;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+        }
+        /*BOX CONTAINER STYLE*/
+        .box-container{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        /*BOX STYLE*/
+        .box{
+            padding: 20px;
+            background-color: white;
+            color: black;
+            text-align: center;
+            margin: 5px;
+        }
+        /*BOX HOVER STYLE*/
+        .box:hover{
+            background-color: yellow;
+            transition: background-color 0.5s;
+        }
+        /*BUTTON CLICK STYLE*/
+        button{
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+         /*BUTTON CLICK HOVER STYLE*/
+         button:hover{
+            background-color: darkgreen;
+            transition: background-color 0.3s;
+         }
+        /*FORM STYLE*/ 
+        form{
+            margin-top: 30px;
+        }
+        /*INPUT STYLE*/ 
+        input{
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+     <!-- START: CONTAINER -->
+     <div class="container">
+        <!-- START: BOX CONTAINER -->
+        <div class="box-container">
+            <div class="box">Box 1</div>
+            <div class="box">Box 2</div>
+            <div class="box">Box 3</div>
+        </div><!-- END: BOX CONTAINER -->
+
+        <button>Click</button>
+
+        <!-- START: FORM -->
+        <form id="myForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email"><br>
+            <button>Submit</button>
+        </form><!-- END: FORM -->
+
+     </div><!-- END: CONTAINER -->
+
+
+    
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Test Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container styles */
+        .container {
+            background-color: gray;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* Box styles */
+        .box-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .box {
+            padding: 20px;
+            background-color: white;
+            color: black;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .box:hover {
+            background-color: yellow;
+            transition: background-color 0.5s;
+        }
+
+        /* Button styles */
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+            transition: background-color 0.3s;
+        }
+
+        /* Form styles */
+        form {
+            margin-top: 20px;
+        }
+
+        input {
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+        #warning {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+  
+    <!-- START: CONTAINER -->
+    <div class="container">
+        <!-- START: BOX-COMTAINER -->
+        <div class="box-container">
+            <div class="box">Box 1</div>
+            <div class="box">Box 2</div>
+            <div class="box">Box 3</div>
+        </div><!-- END: BOX-COMTAINER -->
+        
+        <button id="changeTextButton">Click Me</button><br>
+        
+        <div id="clickCount">Clicks: 0</div>
+
+        <!-- START: FORM -->
+        <form id="myForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email"><br>
+            <button type="submit">Submit</button>
+            <p id="warning"></p>
+        </form><!-- END: FORM -->
+
+        <div id="arrayOutput"></div>
+    </div><!-- END: CONTAINER -->
+
+    <script>
+        // JavaScript for button click event (Task 5)
+        const button = document.getElementById('changeTextButton');
+        const container = document.querySelector('.container');
+        let count = 0;
+
+        button.addEventListener('click', () => {
+            // Change the text of the container (Task 5)
+            container.insertAdjacentHTML('beforeend', "<p style='color: red;'>Text changed!</p>");
+            
+            // Add new div element (Task 6)
+            const newDiv = document.createElement('div');
+            newDiv.style.backgroundColor = 'yellow';
+            newDiv.textContent = 'New Div Element';
+            container.appendChild(newDiv);
+
+            // Update click counter (Task 8)
+            count++;
+            document.getElementById('clickCount').textContent = `Clicks: ${count}`;
+        });
+
+        // JavaScript for form validation (Task 7)
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const warning = document.getElementById('warning');
+
+            if (name === '' || email === '') {
+                event.preventDefault();
+                warning.textContent = 'All fields are required!';
+            }
+        });
+
+        // JavaScript for array manipulation (Task 9)
+        const numbers = [5, 3, 8, 1, 2];
+        const sortedArray = numbers.sort((a, b) => a - b);
+        const sum = numbers.reduce((acc, num) => acc + num, 0);
+
+        document.getElementById('arrayOutput').innerHTML = `
+            <p>Sorted Array: ${sortedArray}</p>
+            <p>Sum: ${sum}</p>
+        `;
+    </script>
+</body>
+</html>
